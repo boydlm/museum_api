@@ -2,7 +2,6 @@ import { useState } from 'react'
 import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
-import Exhibitions from './components/exhibition/exhibition';
 
 function App() {
 
@@ -12,13 +11,13 @@ function App() {
   function getData() {
     axios({
       method: "GET",
-      url:"http://localhost:8000/profile",
+      url:"http://localhost:8000/exhibits?city=Boston",
     })
     .then((response) => {
       const res =response.data
       setExhibitionData(({
         profile_name: res.name,
-        about_me: res.about}))
+        about_me: res.website}))
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
